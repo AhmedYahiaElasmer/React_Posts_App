@@ -19,7 +19,12 @@ function Auth(props) {
               <AddNewPost posts={posts} userId={userId} setPosts={setPosts} />
             }
           />
-          <Route path="editepost" element={<EditePost post={post} />} />
+          <Route
+            path="editepost"
+            element={
+              <EditePost post={post} setPosts={setPosts} posts={posts} />
+            }
+          />
         </Routes>
       ) : (
         <h1>you cant go to auth without login frist</h1>

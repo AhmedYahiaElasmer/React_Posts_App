@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function EditePost(props) {
-  const { userId, post } = props;
+  const { userId, post, setPosts, posts } = props;
   // console.log(post);
   const [postData, setPostData] = useState(post);
   // console.log(postData);
@@ -21,7 +21,7 @@ export default function EditePost(props) {
   } = useForm();
   let location = useLocation();
   const handleChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     let newData = { ...postData };
     newData[e.target.name] = e.target.value;
     setPostData(newData);
@@ -29,25 +29,25 @@ export default function EditePost(props) {
   const nav = useNavigate();
   const onSubmit = (data) => {
     console.log(userId);
-    // axios
-    //   .post("http://localhost:3001/posts", data)
-    //   .then((res) => {
-    //     // console.log("res", res.data);
-    //     //clone
-    //     const oldPosts = [...posts];
-    //     // console.log(oldPosts);
-    //     //edite
-    //     oldPosts.unshift(res.data);
-    //     // console.log(newPosts);
-    //     setPosts(oldPosts);
-    //     console.log(posts);
-    //     toast.success("Add post sucsessfully");
-    //     nav("/auth");
-    //   })
-    //   .catch((res) => {
-    //     toast.error("some thing went wrong");
-    //     console.log(res);
-    //   });
+    axios
+      .patch(`http://localhost:3001/posts/${post.id}`, {
+        ...data,
+        user_id: userId,
+      })
+      .then((res) => {
+        const oldPosts = [...posts];
+
+        oldPosts.unshift(res.data);
+
+        setPosts(oldPosts);
+        console.log(posts);
+        toast.success("EDITE post sucsessfully");
+        nav("/auth");
+      })
+      .catch((res) => {
+        toast.error("some thing went wrong");
+        console.log(res);
+      });
   };
   return (
     <div className=" mt-10 flex justify-center items-center">
