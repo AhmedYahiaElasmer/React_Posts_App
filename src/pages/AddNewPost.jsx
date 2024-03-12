@@ -100,7 +100,7 @@ export default function AddNewPost(props) {
             <p className="text-red-600">{errors.picture?.message}</p> */}
           </div>
           <Button onClick={handleSubmit(onSubmit)} className="mt-6" fullWidth>
-            ADD NEW POSR
+            ADD NEW POST
           </Button>
         </form>
       </Card>

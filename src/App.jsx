@@ -15,6 +15,7 @@ import { jwtDecode } from "jwt-decode";
 
 function App() {
   let [userId, setUserId] = useState();
+  const [post, setPost] = useState();
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     console.log(userId);
@@ -51,7 +52,13 @@ function App() {
               <Route
                 path="/auth/*"
                 element={
-                  <Auth posts={posts} setPosts={setPosts} userId={userId} />
+                  <Auth
+                    posts={posts}
+                    post={post}
+                    setPost={setPost}
+                    setPosts={setPosts}
+                    userId={userId}
+                  />
                 }
               />
 

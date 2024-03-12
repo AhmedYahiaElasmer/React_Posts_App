@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import {
   Card,
@@ -26,7 +27,7 @@ import { DefaultSpeedDial } from "./dial";
 // }
 
 export function TestimonialCard(props) {
-  const { post, userId } = props;
+  const { post, userId, setPost } = props;
   // console.log(post);
   return (
     <Card color="transparent" shadow={false} className="w-full max-w-[40rem]">
@@ -53,7 +54,7 @@ export function TestimonialCard(props) {
           </Typography>
         </div>
         {location.pathname.startsWith("/auth") && post.user_id == userId ? (
-          <DefaultSpeedDial post={post} />
+          <DefaultSpeedDial post={post} setPost={setPost} />
         ) : null}
       </CardHeader>
       <CardBody className="mb-6 p-4">

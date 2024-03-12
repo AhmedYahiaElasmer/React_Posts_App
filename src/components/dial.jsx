@@ -9,9 +9,11 @@ import {
 import { PlusIcon, CogIcon, TrashIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import EditePost from "../pages/EditePost";
+import { useNavigate } from "react-router-dom";
 export function DefaultSpeedDial(props) {
-  const { post } = props;
+  const { post, setPost } = props;
+  const nav = useNavigate();
   const deletePost = async () => {
     // console.log(post);
     try {
@@ -25,7 +27,9 @@ export function DefaultSpeedDial(props) {
     }
   };
   const editePost = () => {
-    console.log(post);
+    // console.log(post);
+    setPost(post);
+    nav("/auth/editepost");
   };
   return (
     <div className="absolute top-0 right-0">

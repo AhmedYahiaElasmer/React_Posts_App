@@ -11,7 +11,7 @@ import {
 
 import { DefaultSpeedDial } from "./dial";
 export function BlogCard(props) {
-  const { post, userId } = props;
+  const { post, userId, setPost } = props;
 
   return (
     <Card color="transparent" className="max-w-[40rem] overflow-hidden">
@@ -34,7 +34,7 @@ export function BlogCard(props) {
         </div>
         {/* {(console.log("user_id", post.user_id), console.log("userId", userId))} */}
         {location.pathname.startsWith("/auth") && post.user_id == userId ? (
-          <DefaultSpeedDial post={post} />
+          <DefaultSpeedDial post={post} setPost={setPost} />
         ) : null}
       </CardFooter>
       <CardHeader
