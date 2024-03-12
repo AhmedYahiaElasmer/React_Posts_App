@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 
 // import Icon from "@mui/material/Icon";
 export default function Home(props) {
-  const { posts, userId, setPost } = props;
+  const { posts, userId, setPost, setPosts } = props;
   // console.log(posts);
   const location = useLocation();
 
@@ -43,12 +43,24 @@ export default function Home(props) {
         >
           {post.picture === "" ? (
             <>
-              <TestimonialCard setPost={setPost} userId={userId} post={post} />
+              <TestimonialCard
+                posts={posts}
+                setPosts={setPosts}
+                setPost={setPost}
+                userId={userId}
+                post={post}
+              />
               <HR />
             </>
           ) : (
             <>
-              <BlogCard userId={userId} setPost={setPost} post={post} />
+              <BlogCard
+                userId={userId}
+                setPost={setPost}
+                post={post}
+                posts={posts}
+                setPosts={setPosts}
+              />
               <HR />
             </>
           )}

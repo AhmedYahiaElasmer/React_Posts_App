@@ -27,7 +27,7 @@ import { DefaultSpeedDial } from "./dial";
 // }
 
 export function TestimonialCard(props) {
-  const { post, userId, setPost } = props;
+  const { post, userId, setPost, posts, setPosts } = props;
   // console.log(post);
   return (
     <Card color="transparent" shadow={false} className="w-full max-w-[40rem]">
@@ -54,7 +54,12 @@ export function TestimonialCard(props) {
           </Typography>
         </div>
         {location.pathname.startsWith("/auth") && post.user_id == userId ? (
-          <DefaultSpeedDial post={post} setPost={setPost} />
+          <DefaultSpeedDial
+            post={post}
+            posts={posts}
+            setPosts={setPosts}
+            setPost={setPost}
+          />
         ) : null}
       </CardHeader>
       <CardBody className="mb-6 p-4">

@@ -11,7 +11,14 @@ function Auth(props) {
         <Routes>
           <Route
             path="/"
-            element={<Home posts={posts} setPost={setPost} userId={userId} />}
+            element={
+              <Home
+                posts={posts}
+                setPosts={setPosts}
+                setPost={setPost}
+                userId={userId}
+              />
+            }
           />
           <Route
             path="addnewpost"

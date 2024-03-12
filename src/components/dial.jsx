@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 // import EditePost from "../pages/EditePost";
 import { useNavigate } from "react-router-dom";
 export function DefaultSpeedDial(props) {
-  const { post, setPost } = props;
+  const { post, setPost, posts, setPosts } = props;
   const nav = useNavigate();
   const deletePost = async () => {
     // console.log(post);
@@ -21,7 +21,9 @@ export function DefaultSpeedDial(props) {
       if (confirm(`are you sure delete this post`)) {
         await axios.delete(`http://localhost:3001/posts/${post.id}`);
         toast.success("deleted succsessfly");
-        location.reload();
+
+        const newPosts = posts.filter((p) => p.id !== post.id);
+        setPosts(newPosts);
       }
     } catch (error) {
       toast.error("somthing went wrong");
