@@ -35,11 +35,12 @@ export default function EditePost(props) {
         user_id: userId,
       })
       .then((res) => {
-        const oldPosts = [...posts];
+        console.log(res);
+        const newPosts = [...posts];
+        const index = newPosts.findIndex((p) => p.id === post.id);
+        newPosts[index] = { ...newPosts[index], ...res.data };
 
-        oldPosts.unshift(res.data);
-
-        setPosts(oldPosts);
+        setPosts(newPosts);
         console.log(posts);
         toast.success("EDITE post sucsessfully");
         nav("/auth");
