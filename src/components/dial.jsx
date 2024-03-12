@@ -21,6 +21,7 @@ export function DefaultSpeedDial(props) {
       if (confirm(`are you sure delete this post`)) {
         await axios.delete(`http://localhost:3001/posts/${post.id}`);
         toast.success("deleted succsessfly");
+        location.reload();
       }
     } catch (error) {
       toast.error("somthing went wrong");
