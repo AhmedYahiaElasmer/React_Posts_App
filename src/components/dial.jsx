@@ -9,7 +9,7 @@ import {
 import { PlusIcon, CogIcon, TrashIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import { toast } from "react-toastify";
-import EditePost from "../pages/EditePost";
+// import EditePost from "../pages/EditePost";
 import { useNavigate } from "react-router-dom";
 export function DefaultSpeedDial(props) {
   const { post, setPost } = props;

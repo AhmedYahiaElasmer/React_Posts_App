@@ -20,25 +20,25 @@ export default function AddNewPost(props) {
   const nav = useNavigate();
   const onSubmit = (data) => {
     console.log(userId);
-    // axios
-    //   .post("http://localhost:3001/posts", data)
-    //   .then((res) => {
-    //     // console.log("res", res.data);
-    //     //clone
-    //     const oldPosts = [...posts];
-    //     // console.log(oldPosts);
-    //     //edite
-    //     oldPosts.unshift(res.data);
-    //     // console.log(newPosts);
-    //     setPosts(oldPosts);
-    //     console.log(posts);
-    //     toast.success("Add post sucsessfully");
-    //     nav("/auth");
-    //   })
-    //   .catch((res) => {
-    //     toast.error("some thing went wrong");
-    //     console.log(res);
-    //   });
+    axios
+      .post("http://localhost:3001/posts", { ...data, user_id: userId })
+      .then((res) => {
+        // console.log("res", res.data);
+        //clone
+        const oldPosts = [...posts];
+        // console.log(oldPosts);
+        //edite
+        oldPosts.unshift(res.data);
+        // console.log(newPosts);
+        setPosts(oldPosts);
+        console.log(posts);
+        toast.success("Add post sucsessfully");
+        nav("/auth");
+      })
+      .catch((res) => {
+        toast.error("some thing went wrong");
+        console.log(res);
+      });
   };
   return (
     <div className=" mt-10 flex justify-center items-center">
